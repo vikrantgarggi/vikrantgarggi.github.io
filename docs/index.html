@@ -1,135 +1,217 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ganpati Industries - PET Bottle Blow Moulding Manufacturing Unit. We produce PET bottles from 100ml to 5 liters for Refined Oil, Water, and Phenyl.">
-    <title>Ganpati Industries | PET Bottle Manufacturers</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-        }
-        header {
-            background: #0d6efd;
-            color: white;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        .hero {
-            background: url('https://via.placeholder.com/1500x500') no-repeat center center/cover;
-            color: white;
-            text-align: center;
-            padding: 5rem 1rem;
-        }
-        .hero h1 {
-            font-size: 2.5rem;
-        }
-        section {
-            padding: 2rem 1rem;
-            max-width: 1100px;
-            margin: auto;
-        }
-        .products ul {
-            list-style: none;
-            padding: 0;
-        }
-        .products li {
-            background: #f4f4f4;
-            margin: 0.5rem 0;
-            padding: 0.5rem;
-            border-radius: 5px;
-        }
-        .catalogue {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-        }
-        .catalogue img {
-            width: 100%;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-        footer {
-            background: #222;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-        }
-    </style>
+  <base target="_top">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ganpati Industries | PET Bottle Manufacturers</title>
+  <style>
+    /* ===== RESET & BASE ===== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    /* ===== HEADER / NAV ===== */
+    header {
+      background: #0a2540;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      padding: 1rem;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #f4b41a;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: linear-gradient(rgba(10,37,64,0.8), rgba(10,37,64,0.8)),
+                  url('https://via.placeholder.com/1500x600') no-repeat center/cover;
+      color: white;
+      text-align: center;
+      padding: 6rem 1rem;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      animation: fadeInDown 1s ease-out;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    /* ===== SECTIONS ===== */
+    section {
+      padding: 3rem 1rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+    section h2 {
+      text-align: center;
+      color: #0a2540;
+      margin-bottom: 2rem;
+      font-size: 2rem;
+      position: relative;
+    }
+    section h2::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 3px;
+      background: #f4b41a;
+      margin: 0.5rem auto 0;
+    }
+
+    /* ===== PRODUCTS ===== */
+    .products ul {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+    .products li {
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .products li:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    /* ===== CATALOGUE ===== */
+    .catalogue {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .catalogue img {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      transition: transform 0.3s ease;
+    }
+    .catalogue img:hover {
+      transform: scale(1.05);
+    }
+
+    /* ===== CONTACT ===== */
+    #contact p {
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #0a2540;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
 
-    <header>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#products">Products</a>
-            <a href="#catalogue">Catalogue</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
+  <!-- NAVIGATION -->
+  <header>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#products">Products</a>
+      <a href="#catalogue">Catalogue</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-    <section id="home" class="hero">
-        <h1>Ganpati Industries</h1>
-        <p>Quality PET Bottles for Refined Oil, Water, and Phenyl — Sizes from 100ml to 5 Liters</p>
-    </section>
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <h1>Ganpati Industries</h1>
+    <p>Premium PET Bottles for Refined Oil, Water & Phenyl — 100ml to 5 Liters</p>
+  </section>
 
-    <section id="about">
-        <h2>About Us</h2>
-        <p>At Ganpati Industries, we specialize in PET bottle blow moulding, producing high-quality bottles in various sizes and shapes. Our bottles are widely used for refined oil, packaged drinking water, phenyl, and other liquid packaging needs. With state-of-the-art technology and strict quality control, we ensure durability, clarity, and food safety compliance in every bottle we produce.</p>
-    </section>
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>About Us</h2>
+    <p style="text-align:center; max-width:800px; margin:auto;">
+      At Ganpati Industries, we specialize in PET bottle blow moulding, delivering superior quality bottles in diverse sizes and designs. Our bottles cater to refined oil, packaged drinking water, phenyl, and other liquid packaging needs. With precision manufacturing and strict quality checks, we ensure every bottle meets the highest standards of durability, clarity, and safety.
+    </p>
+  </section>
 
-    <section id="products" class="products">
-        <h2>Our Products</h2>
-        <ul>
-            <li>100ml - Ideal for samples and small quantities</li>
-            <li>250ml - Suitable for beverages and cleaning products</li>
-            <li>500ml - Common for drinking water and oil</li>
-            <li>1 Liter - Popular for refined oil and phenyl</li>
-            <li>2 Liters - Bulk household usage</li>
-            <li>5 Liters - Large containers for industrial and commercial use</li>
-        </ul>
-    </section>
+  <!-- PRODUCTS -->
+  <section id="products" class="products">
+    <h2>Our Products</h2>
+    <ul>
+      <li><strong>100ml</strong> – Ideal for samples & small packs</li>
+      <li><strong>250ml</strong> – Suitable for beverages & cleaning liquids</li>
+      <li><strong>500ml</strong> – Popular for water & edible oil</li>
+      <li><strong>1 Liter</strong> – Standard size for oil & phenyl</li>
+      <li><strong>2 Liters</strong> – Bulk household use</li>
+      <li><strong>5 Liters</strong> – Large commercial & industrial use</li>
+    </ul>
+  </section>
 
-    <section id="catalogue">
-        <h2>Catalogue</h2>
-        <div class="catalogue">
-            <img src="https://via.placeholder.com/300x400" alt="PET Bottle 1">
-            <img src="https://via.placeholder.com/300x400" alt="PET Bottle 2">
-            <img src="https://via.placeholder.com/300x400" alt="PET Bottle 3">
-            <img src="https://via.placeholder.com/300x400" alt="PET Bottle 4">
-        </div>
-    </section>
+  <!-- CATALOGUE -->
+  <section id="catalogue">
+    <h2>Catalogue</h2>
+    <div class="catalogue">
+      <img src="https://via.placeholder.com/300x400" alt="PET Bottle 1">
+      <img src="https://via.placeholder.com/300x400" alt="PET Bottle 2">
+      <img src="https://via.placeholder.com/300x400" alt="PET Bottle 3">
+      <img src="https://via.placeholder.com/300x400" alt="PET Bottle 4">
+    </div>
+  </section>
 
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <p><strong>Ganpati Industries</strong></p>
-        <p>Address: [Your Factory Address], [City], India</p>
-        <p>Phone: +91-XXXXXXXXXX</p>
-        <p>Email: info@ganpatiindustries.com</p>
-    </section>
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p><strong>Ganpati Industries</strong></p>
+    <p>Address: [Your Factory Address], [City], India</p>
+    <p>Phone: +91-XXXXXXXXXX</p>
+    <p>Email: info@ganpatiindustries.com</p>
+  </section>
 
-    <footer>
-        <p>&copy; 2025 Ganpati Industries. All Rights Reserved.</p>
-    </footer>
+  <!-- FOOTER -->
+  <footer>
+    &copy; 2025 Ganpati Industries. All Rights Reserved.
+  </footer>
 
 </body>
 </html>
