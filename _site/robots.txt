@@ -1,0 +1,30 @@
+User-agent: *
+Allow: /
+
+# Privacy-focused directives
+Disallow: /admin/
+Disallow: /_site/
+Disallow: /_config.yml
+Disallow: /Gemfile
+Disallow: /Gemfile.lock
+Disallow: /assets/css/
+Disallow: /assets/js/
+Disallow: /_layouts/
+Disallow: /_includes/
+Disallow: /_data/
+
+# Block privacy-invasive crawlers
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Sitemap
+Sitemap: https://your-domain.com/sitemap.xml
