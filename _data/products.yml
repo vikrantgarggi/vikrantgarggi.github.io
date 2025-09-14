@@ -1,0 +1,230 @@
+# PET Bottles Product Data by Categories
+
+bottle_category:
+  name: "Bottle"
+  description: "High-quality PET bottles for various applications"
+  icon: "🍶"
+  products:
+    bottle_100ml:
+      name: "100ml PET Bottle"
+      description: "Perfect for samples, travel sizes, and small quantities"
+      capacity: "100ml"
+      height: "12.5cm"
+      neck: "24mm PCO"
+      weight: "9g"
+      image: "/assets/images/bottle_100ml.png"
+      applications: "Essential oils, small cosmetic products, sample sizes"
+      popular: false
+      price_range: "₹2-3 per piece"
+
+    bottle_200ml:
+      name: "200ml PET Bottle"
+      description: "Ideal for personal care and small food products"
+      capacity: "200ml"
+      height: "15.2cm"
+      neck: "24mm PCO"
+      weight: "9g"
+      image: "/assets/images/bottle_200ml.png"
+      applications: "Personal care products, small quantities of oils, beverages"
+      popular: false
+      price_range: "₹2-3 per piece"
+
+    bottle_500ml:
+      name: "500ml PET Bottle"
+      description: "Most popular size for cooking oils and household products"
+      capacity: "500ml"
+      height: "18.5cm"
+      neck: "27mm CTC"
+      weight: "15g"
+      image: "/assets/images/bottle_500ml.png"
+      applications: "Cooking oils, water bottles, household cleaning products"
+      popular: true
+      price_range: "₹2-3 per piece"
+
+    bottle_1000ml:
+      name: "1L PET Bottle"
+      description: "Perfect for large quantities of oils and industrial use"
+      capacity: "1000ml (1L)"
+      height: "22.8cm"
+      neck: "28mm PCO"
+      weight: "26g"
+      image: "/assets/images/bottle_1000ml.png"
+      applications: "Large quantities of oils, water, industrial liquids"
+      popular: true
+      price_range: "₹4-5 per piece"
+
+    bottle_2000ml:
+      name: "2L PET Bottle"
+      description: "Ideal for bulk storage and commercial use"
+      capacity: "2000ml (2L)"
+      height: "26.5cm"
+      neck: "38mm CTC"
+      weight: "52g"
+      image: "/assets/images/bottle_2000ml.png"
+      applications: "Bulk storage of oils, water, commercial liquids"
+      popular: false
+      price_range: "₹8-9 per piece"
+
+    bottle_5000ml:
+      name: "5L PET Bottle"
+      description: "Kenny for industrial and bulk applications"
+      capacity: "5000ml (5L)"
+      height: "32.8cm"
+      neck: "46mm PCO"
+      weight: "85g"
+      image: "/assets/images/bottle_5000ml.png"
+      applications: "Industrial liquids, bulk storage, commercial applications"
+      popular: false
+      price_range: "₹15-18 per piece"
+
+    custom_bottles:
+      name: "Custom PET Bottles"
+      description: "Tailored solutions for your specific requirements"
+      capacity: "Custom"
+      height: "Custom"
+      neck: "Custom"
+      weight: "Custom"
+      image: "/assets/images/bottle_400ml.png"
+      applications: "Any food-grade application"
+      popular: false
+      price_range: "Contact for quote"
+      special_features: "Custom colors, sizes, neck finishes, labeling"
+
+
+
+jar_category:
+  name: "Jar"
+  description: "Premium PET jars for Oils, Pickles, etc."
+  icon: "🫙"
+  products:
+    jar_200gm:
+      name: "200gm Jar"
+      description: "Perfect for Oil, Pickles, etc."
+      capacity: "200gm"
+      height: "-"
+      neck: "38mm PCO"
+      weight: "17g"
+      image: "/assets/images/jar_200gm.jpg"
+      applications: "Oil, Pickles, etc."
+      popular: true
+      price_range: "Contact for quote"
+    jar_500gm:
+      name: "500gm Jar"
+      description: "Perfect for Oil, Pickles, etc."
+      capacity: "500gm"
+      height: "-"
+      neck: "38mm PCO"
+      weight: "32g"
+      image: "/assets/images/jar_500gm.jpg"
+      applications: "Oil, Pickles, etc."
+      popular: true
+      price_range: "Contact for quote"
+    jar_1kg:
+      name: "1kg Jar"
+      description: "Perfect for Oil, Pickles, etc."
+      capacity: "1kg"
+      height: "-"
+      neck: "38mm PCO"
+      weight: "48g"
+      image: "/assets/images/jar_1000g.jpg"
+      applications: "Oil, Pickles, etc."
+      popular: true
+      price_range: "Contact for quote"
+
+beverage_category:
+  name: "Beverage"
+  description: "Premium PET bottles for Beverage"
+  icon: "🫙"
+  products:
+    beverage_180ml:
+      name: "180ml Beverage Bottle"
+      description: "Perfect for Beverage"
+      capacity: "180ml"
+      height: "-"
+      neck: "27mm PCO"
+      weight: "12g"
+      image: "/assets/images/beverage_180ml.png"
+      applications: "Beverage"
+      popular: true
+      price_range: "Contact for quote"
+    beverage_180mlgreen:
+      name: "180ml Jeera Bottle"
+      description: "Perfect for Jeera"
+      capacity: "180ml"
+      height: "-"
+      neck: "27mm PCO"
+      weight: "12g"
+      image: "/assets/images/beverage_180ml_green.png"
+      applications: "Jeera Beverage"
+      popular: true
+      price_range: "Contact for quote"
+    beverage_250ml:
+      name: "250ml Sting Bottle"
+      description: "Perfect for Beverage"
+      capacity: "250ml"
+      height: "-"
+      neck: "38mm PCO"
+      weight: "14.5g"
+      image: "/assets/images/beverage_250ml.png"
+      applications: "Sting"
+      popular: true
+      price_range: "Contact for quote"
+    beverage_250ml_milk:
+      name: "250ml Milk Badam Bottle"
+      description: "Perfect for Milk Badam"
+      capacity: "250ml"
+      height: "-"
+      neck: "38mm PCO"
+      weight: "17g"
+      image: "/assets/images/beverage_250ml_milk.jpg"
+      applications: "Milk Badam"
+      popular: true
+      price_range: "₹4-5 per piece"
+
+closure_category:
+  name: "Closure"
+  description: "Premium PET closures for Bottles, Jars, etc."
+  icon: "🔒"
+  products:
+    Cap28mm:
+      name: "28mm Cap"
+      description: "28mm Cap"
+      capacity: ""
+      weight: "-"
+      image: "/assets/images/cap_28mm.png"
+      price_range: "Contact for quote"
+    CapCTC:
+      name: "CTC Cap"
+      description: "CTC Cap"
+      capacity: ""
+      weight: "-"
+      image: "/assets/images/cap_ctc.png"
+      price_range: "Contact for quote"
+    Cap46mm:
+      name: "46mm Cap"
+      description: "46mm Cap"
+      capacity: ""
+      weight: "-"
+      image: "/assets/images/cap_46mm.png"
+      price_range: "Contact for quote"
+    CapBigCTC:
+      name: "Big CTC Cap"
+      description: "Big CTC Cap"
+      capacity: ""
+      weight: "-"
+      image: "/assets/images/cap_big_ctc.png"
+      price_range: "Contact for quote"
+    Handle28mm:
+      name: "28mm Handle"
+      description: "28mm Handle"
+      capacity: ""
+      weight: "-"
+      image: "/assets/images/handle_28mm.png"
+      price_range: "Contact for quote"
+    Handle46mm:
+      name: "46mm Handle"
+      description: "46mm Handle"
+      capacity: ""
+      weight: "-"
+      image: "/assets/images/handle_46mm.jpg"
+      price_range: "Contact for quote"
