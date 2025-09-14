@@ -60,7 +60,7 @@ bottle_category:
       height: "26.5cm"
       neck: "38mm CTC"
       weight: "52g"
-      image: "/assets/images/bottle_2000ml.png"
+      image: "/assets/images/bottle_2000ml.PNG"
       applications: "Bulk storage of oils, water, commercial liquids"
       popular: false
       price_range: "₹8-9 per piece"
