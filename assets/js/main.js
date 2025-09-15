@@ -170,7 +170,100 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
+    function validateForm() {
+        const form = document.getElementById('contactForm');
+        const name = form.querySelector('#name').value.trim();
+        const email = form.querySelector('#email').value.trim();
+        const phone = form.querySelector('#phone').value.trim();
+        const message = form.querySelector('#message').value.trim();
+        
+        // Clear previous error messages
+        clearFieldErrors();
+        
+        let isValid = true;
+        let errorMessages = [];
+        
+        // Validate name (required)
+        if (!name) {
+            showFieldError('name', 'Full name is required');
+            isValid = false;
+        }
+        
+        // Validate email (optional, but if provided, must be valid)
+        if (email && !isValidEmail(email)) {
+            showFieldError('email', 'Please enter a valid email address');
+            isValid = false;
+        }
+        
+        // Validate phone (required and must be valid format)
+        if (!phone) {
+            showFieldError('phone', 'Phone number is required');
+            isValid = false;
+        } else if (!isValidPhone(phone)) {
+            showFieldError('phone', 'Please enter a valid phone number (10-15 digits)');
+            isValid = false;
+        }
+        
+        // Validate message (required)
+        if (!message) {
+            showFieldError('message', 'Requirements description is required');
+            isValid = false;
+        }
+        
+        return isValid;
+    }
+    
+    function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+    
+    function isValidPhone(phone) {
+        // Remove all non-digit characters for validation
+        const digitsOnly = phone.replace(/[^\d]/g, '');
+        // Check if it has 10-15 digits
+        return digitsOnly.length >= 10 && digitsOnly.length <= 15;
+    }
+    
+    function showFieldError(fieldId, message) {
+        const field = document.getElementById(fieldId);
+        const formGroup = field.closest('.form-group');
+        
+        // Remove existing error
+        const existingError = formGroup.querySelector('.field-error');
+        if (existingError) {
+            existingError.remove();
+        }
+        
+        // Add error message
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'field-error';
+        errorDiv.style.cssText = 'color: #dc3545; font-size: 0.875rem; margin-top: 0.25rem;';
+        errorDiv.textContent = message;
+        
+        formGroup.appendChild(errorDiv);
+        
+        // Add error styling to field
+        field.style.borderColor = '#dc3545';
+    }
+    
+    function clearFieldErrors() {
+        const errorMessages = document.querySelectorAll('.field-error');
+        errorMessages.forEach(error => error.remove());
+        
+        // Reset field border colors
+        const fields = document.querySelectorAll('#contactForm input, #contactForm textarea');
+        fields.forEach(field => {
+            field.style.borderColor = '';
+        });
+    }
+    
     function submitForm() {
+        // Validate form first
+        if (!validateForm()) {
+            return;
+        }
+        
         const form = document.getElementById('contactForm');
         const submitButton = form.querySelector('button[type="submit"]');
         const originalText = submitButton.textContent;
@@ -194,7 +287,7 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch(window.siteConfig.apiContactUrl, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'text/plain',
             },
             body: JSON.stringify(data)
         })

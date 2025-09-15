@@ -74,13 +74,6 @@
                 </div>
                 
                 <div class="header-cta">
-                    <nav class="nav">
-                        <ul class="nav-list">
-                            <!-- <li><a href="#home" class="nav-link">Home</a></li> -->
-                            <li><a href="/index.html" class="nav-link">Home</a></li>
-                            <li><a href="/privacy-policy.html" class="nav-link">Privacy Policy</a></li>
-                        </ul>
-                    </nav>
                     <a href="https://wa.me/{{ site.business_whatsapp | remove: '+' }}?text=Hi, I'm interested in your PET bottles. Can you share pricing details?" 
                        class="btn btn-whatsapp" target="_blank">
                         <span class="whatsapp-icon">💬</span>
@@ -99,32 +92,10 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>{{ site.business_name }}</h3>
-                    <p>{{ site.business_tagline }}</p>
-                    <p>{{ site.business_address }}</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Contact Info</h4>
-                    <p>📞 <a href="tel:{{ site.business_phone }}">{{ site.business_phone }}</a></p>
-                    <p>📧 <a href="mailto:{{ site.business_email }}">{{ site.business_email }}</a></p>
-                    <p>💬 <a href="https://wa.me/{{ site.business_whatsapp | remove: '+' }}" target="_blank">WhatsApp</a></p>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Business Hours</h4>
-                    <p>Mon - Sat: 9:00 AM - 3:00 PM</p>
-                    <p>Sun: Closed</p>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; {{ 'now' | date: "%Y" }} {{ site.business_name }}. All rights reserved.</p>
-                <p>Manufacturing high-quality PET bottles for the food industry</p>
-                <p><a href="/privacy-policy.html" style="color: #7f8c8d; text-decoration: none;">Privacy Policy</a></p>
-            </div>
+        <div class="footer-bottom">
+            <p>&copy; {{ 'now' | date: "%Y" }} {{ site.business_name }}. All rights reserved.</p>
+            <p>Manufacturing high-quality PET bottles for the food industry</p>
+            <p><a href="/privacy-policy.html" style="color: var(--white); text-decoration: none;">Privacy Policy</a></p>
         </div>
     </footer>
 
