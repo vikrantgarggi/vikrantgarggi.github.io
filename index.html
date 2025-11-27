@@ -1,0 +1,217 @@
+---
+layout: default
+---
+
+{% include icons.html %}
+
+<div class="page-root">
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <div class="brand">
+        <img src="/assets/images/logo.png" alt="{{ site.data.company.name }}" width="54" height="46">
+        <span>{{ site.data.company.name }}</span>
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="nav-links">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#products" class="nav-link">Products</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button class="mobile-toggle" aria-label="Toggle navigation">
+        <svg class="icon-medium" id="menu-icon"><use href="#icon-menu"></use></svg>
+        <svg class="icon-medium" id="close-icon" style="display: none;"><use href="#icon-x"></use></svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu" style="display: none;">
+      <a href="#home" class="mobile-link">Home</a>
+      <a href="#products" class="mobile-link">Products</a>
+      <a href="#about" class="mobile-link">About</a>
+      <a href="#contact" class="mobile-link">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="section hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">{{ site.data.company.tagline }}</h1>
+        <p class="hero-description">{{ site.data.company.heroDescription }}</p>
+        <a href="#contact" class="primary-btn">
+          Request Quote
+          <svg class="icon-medium"><use href="#icon-chevron-right"></use></svg>
+        </a>
+      </div>
+
+      <!-- Features -->
+      <div class="features-grid">
+        <div class="feature-card">
+          <svg class="icon-feature"><use href="#icon-droplets"></use></svg>
+          <h3>Food-Grade Quality</h3>
+          <p>100% food-safe PET material certified for edible oil storage</p>
+        </div>
+        <div class="feature-card">
+          <svg class="icon-feature"><use href="#icon-award"></use></svg>
+          <h3>ISO Certified</h3>
+          <p>Manufacturing excellence with international quality standards</p>
+        </div>
+        <div class="feature-card">
+          <svg class="icon-feature"><use href="#icon-package"></use></svg>
+          <h3>Custom Solutions</h3>
+          <p>Tailored packaging options to meet your specific requirements</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Section -->
+  <section id="products" class="section products-section">
+    <div class="container">
+      <div class="section-heading">
+        <h2 id="category-name">{{ site.data.products.bottle_category.name }}</h2>
+        <p id="category-description">{{ site.data.products.bottle_category.description }}</p>
+      </div>
+
+      <!-- Product Tabs -->
+      <div class="tab-group">
+        {% for category in site.data.products %}
+          {% assign category_key = category[0] %}
+          {% assign category_data = category[1] %}
+          <button class="tab-button" data-category="{{ category_key }}">
+            {{ category_data.name }}
+          </button>
+        {% endfor %}
+      </div>
+
+      <!-- Product Grid -->
+      <div class="product-grid" id="product-grid">
+        {% assign first_category = site.data.products.bottle_category %}
+        {% for product in first_category.products %}
+          <div class="product-card">
+            <div class="product-media">
+              {% if product.image %}
+                <img src="{{ product.image }}" alt="{{ product.name }}" class="product-image" style="width: 100%; height: 100%; object-fit: contain;">
+              {% else %}
+                <img src="/assets/images/default-product.png" alt="{{ product.name }}" class="product-image" style="width: 100%; height: 100%; object-fit: contain;">
+              {% endif %}
+            </div>
+            <h3>{{ product.name }}</h3>
+            {% if product.capacity %}<p class="product-capacity">{{ product.capacity }}</p>{% endif %}
+            {% if product.description %}<p class="product-description">{{ product.description }}</p>{% endif %}
+            {% if product.features %}
+              <ul class="product-features">
+                {% for feature in product.features %}
+                  <li class="product-feature">
+                    <svg class="product-feature-icon"><use href="#icon-chevron-right"></use></svg>
+                    <span>{{ feature }}</span>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section about-section">
+    <div class="container">
+      <div class="section-heading">
+        <h2>About Us</h2>
+      </div>
+      {% for paragraph in site.data.company.aboutText %}
+        <p>{{ paragraph }}</p>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section contact-section">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Get In Touch</h2>
+        <p>Ready to discuss your packaging needs? Contact us today</p>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Contact Info -->
+        <div class="contact-details">
+          <div class="contact-card">
+            <svg class="contact-icon"><use href="#icon-mail"></use></svg>
+            <div>
+              <h3>Email</h3>
+              <p>{{ site.data.company.contact.email }}</p>
+            </div>
+          </div>
+          <div class="contact-card">
+            <svg class="contact-icon"><use href="#icon-phone"></use></svg>
+            <div>
+              <h3>Phone</h3>
+              <p>{{ site.data.company.contact.phone }}</p>
+            </div>
+          </div>
+          <div class="contact-card">
+            <svg class="contact-icon"><use href="#icon-map-pin"></use></svg>
+            <div>
+              <h3>Location</h3>
+              <p>{{ site.data.company.contact.location }}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form">
+          <input type="text" placeholder="Your Name" id="contact-name" class="contact-input">
+          <input type="email" placeholder="Your Email" id="contact-email" class="contact-input">
+          <input type="tel" placeholder="Phone Number" id="contact-phone" class="contact-input">
+          <textarea placeholder="Your Message" rows="4" id="contact-message" class="contact-input"></textarea>
+          <button class="contact-submit" id="contact-submit">Send Message</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-brand">
+        <svg class="icon-medium"><use href="#icon-package"></use></svg>
+        <span>{{ site.data.company.name }}</span>
+      </div>
+      <p>© 2024 {{ site.data.company.name }}. All rights reserved.</p>
+    </div>
+  </footer>
+</div>
+
+<!-- Store products data for JavaScript -->
+<script>
+  window.productsData = {
+    {% for category in site.data.products %}
+      {% assign category_key = category[0] %}
+      {% assign category_data = category[1] %}
+      "{{ category_key }}": {
+        name: "{{ category_data.name | escape }}",
+        description: "{{ category_data.description | escape }}",
+        products: [
+          {% for product in category_data.products %}
+            {
+              name: "{{ product.name | escape }}",
+              description: "{{ product.description | escape }}",
+              capacity: "{{ product.capacity | escape }}",
+              image: "{{ product.image | default: '/assets/images/default-product.png' }}",
+              features: {% if product.features %}{{ product.features | jsonify }}{% else %}[]{% endif %}
+            }{% unless forloop.last %},{% endunless %}
+          {% endfor %}
+        ]
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  };
+</script>
+
