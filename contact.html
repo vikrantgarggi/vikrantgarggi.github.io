@@ -1,0 +1,200 @@
+---
+layout: default
+title: Contact Us
+---
+
+{% include icons.html %}
+
+<div class="page-root">
+  <!-- Top Contact Bar -->
+  <div class="top-contact-bar">
+    <div class="container">
+      <div class="top-contact-content">
+        <a href="mailto:{{ site.data.company.contact.email }}" class="top-contact-link">
+          <svg class="top-contact-icon"><use href="#icon-mail"></use></svg>
+          {{ site.data.company.contact.email }}
+        </a>
+        <a href="tel:{{ site.data.company.contact.phone }}" class="top-contact-link">
+          <svg class="top-contact-icon"><use href="#icon-phone"></use></svg>
+          {{ site.data.company.contact.phone }}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <div class="brand">
+        <a href="/">
+          <img src="/assets/images/logo.png" alt="{{ site.data.company.name }}" width="54" height="46">
+          <span>{{ site.data.company.name }}</span>
+        </a>
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="nav-links">
+        <a href="/" class="nav-link">Home</a>
+        <a href="/products.html" class="nav-link">Products</a>
+        <a href="/contact.html" class="nav-link active">Contact Us</a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button class="mobile-toggle" aria-label="Toggle navigation">
+        <svg class="icon-medium" id="menu-icon"><use href="#icon-menu"></use></svg>
+        <svg class="icon-medium" id="close-icon" style="display: none;"><use href="#icon-x"></use></svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu" style="display: none;">
+      <a href="/" class="mobile-link">Home</a>
+      <a href="/products.html" class="mobile-link">Products</a>
+      <a href="/contact.html" class="mobile-link">Contact Us</a>
+    </div>
+  </nav>
+
+  <!-- Company Information and Map Section -->
+  <section class="section company-map-section">
+    <div class="container">
+      <div class="company-map-wrapper">
+        <div class="company-info-side">
+          <h2 class="company-name">{{ site.data.company.name }}</h2>
+          <div class="company-details">
+            <p class="company-address">{{ site.data.company.contact.fullAddress | default: site.data.company.contact.location }}</p>
+            <div class="company-contact">
+              <p><strong>Tel:</strong> <a href="tel:{{ site.data.company.contact.tel | default: site.data.company.contact.phone }}">{{ site.data.company.contact.tel | default: site.data.company.contact.phone }}</a></p>
+              <p><strong>Email:</strong> <a href="mailto:{{ site.data.company.contact.email }}">{{ site.data.company.contact.email }}</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="map-side">
+          <div class="map-wrapper">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453.1234567890123!2d75.3463125!3d29.9730625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391118ab8d0e9f9b%3A0x5c3a0688ad222cda!2sGanpati%20Industries!5e0!3m2!1sen!2sin!4v1735392000000!5m2!1sen!2sin" 
+              width="100%" 
+              height="100%" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="section contact-form-section">
+    <div class="container">
+      <div class="form-heading">
+        <h2>Let's Get in Touch</h2>
+        <p>How We Can Help You?</p>
+      </div>
+
+      <div class="contact-form-container">
+        <form class="contact-form" id="contact-form">
+          <div class="form-group">
+            <label for="contact-name">Name <span class="required">*</span></label>
+            <input 
+              type="text" 
+              id="contact-name" 
+              name="name"
+              class="contact-input" 
+              placeholder="Your Name"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="contact-email">Email Address <span class="required">*</span></label>
+            <input 
+              type="email" 
+              id="contact-email" 
+              name="email"
+              class="contact-input" 
+              placeholder="Your Email Address"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="contact-phone">Contact No. <span class="required">*</span></label>
+            <div class="phone-input-wrapper">
+              <div class="country-code">
+                <span>+91</span>
+              </div>
+              <input 
+                type="tel" 
+                id="contact-phone" 
+                name="phone"
+                class="contact-input phone-input" 
+                placeholder="Phone Number"
+                required
+              >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="contact-products">Products <span class="required">*</span></label>
+            <select 
+              id="contact-products" 
+              name="products"
+              class="contact-input contact-select" 
+              required
+            >
+              <option value="">Select Products</option>
+              {% for category in site.data.products %}
+                {% assign category_data = category[1] %}
+                <option value="{{ category_data.name }}">{{ category_data.name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="contact-message">How we can help you? <span class="required">*</span></label>
+            <textarea 
+              id="contact-message" 
+              name="message"
+              class="contact-input contact-textarea" 
+              rows="6"
+              placeholder="Tell us how we can help you..."
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" class="contact-submit" id="contact-submit">
+            SUBMIT
+          </button>
+          <div id="form-message" class="form-message"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-contact">
+          <a href="mailto:{{ site.data.company.contact.email }}">
+            <svg class="footer-icon"><use href="#icon-mail"></use></svg>
+            {{ site.data.company.contact.email }}
+          </a>
+          <a href="tel:{{ site.data.company.contact.phone }}">
+            <svg class="footer-icon"><use href="#icon-phone"></use></svg>
+            {{ site.data.company.contact.phone }}
+          </a>
+          <p>
+            <svg class="footer-icon"><use href="#icon-map-pin"></use></svg>
+            {{ site.data.company.contact.location }}
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© {{ 'now' | date: "%Y" }} {{ site.data.company.name }}. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+</div>

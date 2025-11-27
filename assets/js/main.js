@@ -24,88 +24,90 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Product category tabs
-  const tabButtons = document.querySelectorAll('.tab-button');
-  const productGrid = document.getElementById('product-grid');
-  const categoryName = document.getElementById('category-name');
-  const categoryDescription = document.getElementById('category-description');
-
-  if (tabButtons.length && productGrid && window.productsData) {
-    tabButtons.forEach(button => {
-      button.addEventListener('click', function() {
-        const categoryKey = this.getAttribute('data-category');
-        const categoryData = window.productsData[categoryKey];
-
-        if (categoryData) {
-          // Update active tab
-          tabButtons.forEach(btn => btn.classList.remove('tab-active'));
-          this.classList.add('tab-active');
-
-          // Update category info
-          categoryName.textContent = categoryData.name;
-          categoryDescription.textContent = categoryData.description;
-
-          // Update product grid
-          productGrid.innerHTML = categoryData.products.map(product => {
-            const featuresHtml = product.features && product.features.length > 0
-              ? `<ul class="product-features">
-                  ${product.features.map(feature => `
-                    <li class="product-feature">
-                      <svg class="product-feature-icon"><use href="#icon-chevron-right"></use></svg>
-                      <span>${feature}</span>
-                    </li>
-                  `).join('')}
-                </ul>`
-              : '';
-
-            return `
-              <div class="product-card">
-                <div class="product-media">
-                  <img src="${product.image || '/assets/images/default-product.png'}" 
-                       alt="${product.name}" 
-                       class="product-image" 
-                       style="width: 100%; height: 100%; object-fit: contain;">
-                </div>
-                <h3>${product.name}</h3>
-                ${product.capacity ? `<p class="product-capacity">${product.capacity}</p>` : ''}
-                ${product.description ? `<p class="product-description">${product.description}</p>` : ''}
-                ${featuresHtml}
-              </div>
-            `;
-          }).join('');
-
-          // Scroll to products section
-          document.getElementById('products').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+  // Product Carousels
+  const productCarousels = document.querySelectorAll('.product-carousel');
+  
+  productCarousels.forEach(carousel => {
+    const category = carousel.getAttribute('data-category');
+    const track = carousel.querySelector('.product-carousel-track');
+    const prevBtn = document.querySelector(`.carousel-prev[data-target="${category}"]`);
+    const nextBtn = document.querySelector(`.carousel-next[data-target="${category}"]`);
+    
+    if (track && prevBtn && nextBtn) {
+      const scrollAmount = 280; // Width of card + gap
+      
+      prevBtn.addEventListener('click', function() {
+        track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
       });
-    });
+      
+      nextBtn.addEventListener('click', function() {
+        track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      });
+    }
+  });
 
-    // Set first tab as active
-    if (tabButtons.length > 0) {
-      tabButtons[0].classList.add('tab-active');
+  // Contact Form Submission
+  const contactForm = document.getElementById('contact-form');
+  const formMessage = document.getElementById('form-message');
+  
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const formData = {
+        name: document.getElementById('contact-name').value.trim(),
+        email: document.getElementById('contact-email').value.trim(),
+        phone: document.getElementById('contact-phone').value.trim(),
+        products: document.getElementById('contact-products')?.value || '',
+        message: document.getElementById('contact-message').value.trim()
+      };
+      
+      // Basic validation
+      if (!formData.name || !formData.email || !formData.phone || !formData.products || !formData.message) {
+        showFormMessage('Please fill in all required fields.', 'error');
+        return;
+      }
+      
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formData.email)) {
+        showFormMessage('Please enter a valid email address.', 'error');
+        return;
+      }
+      
+      // Phone validation (basic - at least 10 digits)
+      const phoneRegex = /^[0-9]{10,}$/;
+      if (!phoneRegex.test(formData.phone.replace(/\D/g, ''))) {
+        showFormMessage('Please enter a valid phone number.', 'error');
+        return;
+      }
+      
+      // Simulate form submission (you can replace this with actual API call)
+      // For now, we'll just show a success message
+      showFormMessage('Thank you for your inquiry! We will contact you soon.', 'success');
+      
+      // Reset form
+      contactForm.reset();
+      
+      // Scroll to message
+      if (formMessage) {
+        formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+      
+      // Hide message after 5 seconds
+      setTimeout(() => {
+        if (formMessage) {
+          formMessage.style.display = 'none';
+        }
+      }, 5000);
+    });
+  }
+  
+  function showFormMessage(message, type) {
+    if (formMessage) {
+      formMessage.textContent = message;
+      formMessage.className = `form-message ${type}`;
+      formMessage.style.display = 'block';
     }
   }
-
-  // Contact form submission
-  const contactSubmit = document.getElementById('contact-submit');
-  if (contactSubmit) {
-    contactSubmit.addEventListener('click', function(e) {
-      e.preventDefault();
-      const name = document.getElementById('contact-name').value;
-      const email = document.getElementById('contact-email').value;
-      const phone = document.getElementById('contact-phone').value;
-      const message = document.getElementById('contact-message').value;
-
-      if (name && email && message) {
-        alert('Thank you for your inquiry! We will contact you soon.');
-        document.getElementById('contact-name').value = '';
-        document.getElementById('contact-email').value = '';
-        document.getElementById('contact-phone').value = '';
-        document.getElementById('contact-message').value = '';
-      } else {
-        alert('Please fill in all required fields.');
-      }
-    });
-  }
 });
-

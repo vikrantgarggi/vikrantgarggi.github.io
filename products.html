@@ -1,5 +1,6 @@
 ---
 layout: default
+title: Products
 ---
 
 {% include icons.html %}
@@ -25,14 +26,16 @@ layout: default
   <nav class="navbar">
     <div class="container navbar-inner">
       <div class="brand">
-        <img src="/assets/images/logo.png" alt="{{ site.data.company.name }}" width="54" height="46">
-        <span>{{ site.data.company.name }}</span>
+        <a href="/">
+          <img src="/assets/images/logo.png" alt="{{ site.data.company.name }}" width="54" height="46">
+          <span>{{ site.data.company.name }}</span>
+        </a>
       </div>
 
       <!-- Desktop Menu -->
       <div class="nav-links">
         <a href="/" class="nav-link">Home</a>
-        <a href="/products.html" class="nav-link">Products</a>
+        <a href="/products.html" class="nav-link active">Products</a>
         <a href="/contact.html" class="nav-link">Contact Us</a>
       </div>
 
@@ -51,54 +54,53 @@ layout: default
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section id="home" class="hero-section">
-    <div class="hero-content">
-      <h1 class="hero-title">{{ site.data.company.tagline }}</h1>
-      <p class="hero-description">{{ site.data.company.heroDescription }}</p>
-    </div>
-  </section>
-
   <!-- Products Section -->
-  <section id="products" class="section products-section">
+  <section class="section products-page-section">
     <div class="container">
-      <div class="section-heading">
-        <h2>Product Category</h2>
-      </div>
-      <div class="categories-grid">
-        {% for category in site.data.products %}
-          {% assign category_key = category[0] %}
-          {% assign category_data = category[1] %}
-          <div class="category-card">
-            <div class="category-icon">
-              {% if category_data.icon %}
-                <span class="category-emoji">{{ category_data.icon }}</span>
-              {% else %}
-                <svg class="icon-large"><use href="#icon-package"></use></svg>
-              {% endif %}
-            </div>
-            <h3 class="category-card-title">{{ category_data.name }}</h3>
-            <p class="category-card-description">{{ category_data.description }}</p>
+      {% for category in site.data.products %}
+        {% assign category_key = category[0] %}
+        {% assign category_data = category[1] %}
+        
+        <div class="product-category-section" id="{{ category_key }}">
+          <div class="section-heading">
+            <h2>{{ category_data.name }}</h2>
+            <p>{{ category_data.description }}</p>
           </div>
-        {% endfor %}
-      </div>
-      <div class="categories-cta">
-        <a href="/products.html" class="primary-btn">View Products</a>
-      </div>
-    </div>
-  </section>
 
-  <!-- About Section -->
-  <section id="about" class="section about-section">
-    <div class="container">
-      <div class="section-heading">
-        <h2>About Us</h2>
-      </div>
-      <div class="about-content">
-        {% for paragraph in site.data.company.aboutText %}
-          <p>{{ paragraph }}</p>
-        {% endfor %}
-      </div>
+          <div class="products-grid">
+            {% for product_data in category_data.products %}
+              <div class="product-card">
+                <div class="product-media">
+                  {% if product_data.image %}
+                    <img 
+                      src="{{ product_data.image }}" 
+                      alt="{{ product_data.name }}"
+                      class="product-image"
+                      width="200"
+                      height="180"
+                      loading="lazy"
+                    >
+                  {% else %}
+                    <img 
+                      src="/assets/images/default-product.png" 
+                      alt="{{ product_data.name }}"
+                      class="product-image"
+                      width="200"
+                      height="180"
+                      loading="lazy"
+                    >
+                  {% endif %}
+                </div>
+                
+                <div class="product-info">
+                  <h4 class="product-name">{{ product_data.name }}</h4>
+                  <p class="product-description">{{ product_data.description }}</p>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
     </div>
   </section>
 
@@ -127,3 +129,4 @@ layout: default
     </div>
   </footer>
 </div>
+
