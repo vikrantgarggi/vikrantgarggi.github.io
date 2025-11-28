@@ -1,7 +1,7 @@
 title: Ganpati Industries
 description: Premium PET Packaging Solutions
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site
+baseurl: ""
+url: "https://ganpatimansa.com"
 
 # Build settings
 markdown: kramdown
