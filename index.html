@@ -5,22 +5,6 @@ layout: default
 {% include icons.html %}
 
 <div class="page-root">
-  <!-- Top Contact Bar -->
-  <div class="top-contact-bar">
-    <div class="container">
-      <div class="top-contact-content">
-        <a href="mailto:{{ site.data.company.contact.email }}" class="top-contact-link">
-          <svg class="top-contact-icon"><use href="#icon-mail"></use></svg>
-          {{ site.data.company.contact.email }}
-        </a>
-        <a href="tel:{{ site.data.company.contact.phone }}" class="top-contact-link">
-          <svg class="top-contact-icon"><use href="#icon-phone"></use></svg>
-          {{ site.data.company.contact.phone }}
-        </a>
-      </div>
-    </div>
-  </div>
-
   <!-- Navigation -->
   <nav class="navbar">
     <div class="container navbar-inner">
@@ -32,8 +16,8 @@ layout: default
       <!-- Desktop Menu -->
       <div class="nav-links">
         <a href="/" class="nav-link">Home</a>
-        <a href="/products.html" class="nav-link">Products</a>
-        <a href="/contact.html" class="nav-link">Contact Us</a>
+        <a href="#products" class="nav-link">Products</a>
+        <a href="#contact" class="nav-link">Contact Us</a>
       </div>
 
       <!-- Mobile Menu Button -->
@@ -46,8 +30,8 @@ layout: default
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobile-menu" style="display: none;">
       <a href="/" class="mobile-link">Home</a>
-      <a href="/products.html" class="mobile-link">Products</a>
-      <a href="/contact.html" class="mobile-link">Contact Us</a>
+      <a href="#products" class="mobile-link">Products</a>
+      <a href="#contact" class="mobile-link">Contact Us</a>
     </div>
   </nav>
 
@@ -63,27 +47,24 @@ layout: default
   <section id="products" class="section products-section">
     <div class="container">
       <div class="section-heading">
-        <h2>Product Category</h2>
+        <h2>Products</h2>
       </div>
-      <div class="categories-grid">
+      <div class="products-grid">
         {% for category in site.data.products %}
           {% assign category_key = category[0] %}
           {% assign category_data = category[1] %}
-          <div class="category-card">
-            <div class="category-icon">
-              {% if category_data.icon %}
-                <span class="category-emoji">{{ category_data.icon }}</span>
-              {% else %}
-                <svg class="icon-large"><use href="#icon-package"></use></svg>
-              {% endif %}
+          <div class="product-card">
+            {% if category_data.image %}
+              <div class="product-image-wrapper">
+                <img src="{{ category_data.image }}" alt="{{ category_data.name }}" class="product-image">
+              </div>
+            {% endif %}
+            <div class="product-card-content">
+              <h3 class="product-card-title">{{ category_data.name }}</h3>
+              <p class="product-card-description">{{ category_data.description }}</p>
             </div>
-            <h3 class="category-card-title">{{ category_data.name }}</h3>
-            <p class="category-card-description">{{ category_data.description }}</p>
           </div>
         {% endfor %}
-      </div>
-      <div class="categories-cta">
-        <a href="/products.html" class="primary-btn">View Products</a>
       </div>
     </div>
   </section>
@@ -102,6 +83,118 @@ layout: default
     </div>
   </section>
 
+  <!-- Contact Section -->
+  <section id="contact" class="section contact-section">
+    <div class="container">
+      <div class="section-heading">
+        <h2>Contact Us</h2>
+        <p>Get in touch with us for your packaging needs</p>
+      </div>
+      
+      <div class="contact-wrapper">
+        <!-- Company Information -->
+        <div class="contact-info-side">
+          <h3 class="contact-info-title">{{ site.data.company.name }}</h3>
+          <div class="contact-details">
+            <div class="contact-detail-item">
+              <svg class="contact-detail-icon"><use href="#icon-map-pin"></use></svg>
+              <div>
+                <strong>Address:</strong>
+                <p>{{ site.data.company.contact.fullAddress | default: site.data.company.contact.location }}</p>
+              </div>
+            </div>
+            <div class="contact-detail-item">
+              <svg class="contact-detail-icon"><use href="#icon-mail"></use></svg>
+              <div>
+                <strong>Email:</strong>
+                <p><a href="mailto:{{ site.data.company.contact.email }}">{{ site.data.company.contact.email }}</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form-side">
+          <form class="contact-form" id="contact-form">
+            <div class="form-group">
+              <label for="contact-name">Name <span class="required">*</span></label>
+              <input 
+                type="text" 
+                id="contact-name" 
+                name="name"
+                class="contact-input" 
+                placeholder="Your Name"
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="contact-email">Email Address <span class="required">*</span></label>
+              <input 
+                type="email" 
+                id="contact-email" 
+                name="email"
+                class="contact-input" 
+                placeholder="Your Email Address"
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="contact-phone">Contact No. <span class="required">*</span></label>
+              <div class="phone-input-wrapper">
+                <div class="country-code">
+                  <span>+91</span>
+                </div>
+                <input 
+                  type="tel" 
+                  id="contact-phone" 
+                  name="phone"
+                  class="contact-input phone-input" 
+                  placeholder="Phone Number"
+                  required
+                >
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="contact-products">Products <span class="required">*</span></label>
+              <select 
+                id="contact-products" 
+                name="products"
+                class="contact-input contact-select" 
+                required
+              >
+                <option value="">Select Products</option>
+                {% for category in site.data.products %}
+                  {% assign category_data = category[1] %}
+                  <option value="{{ category_data.name }}">{{ category_data.name }}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="form-group full-width">
+              <label for="contact-message">How we can help you? <span class="required">*</span></label>
+              <textarea 
+                id="contact-message" 
+                name="message"
+                class="contact-input contact-textarea" 
+                rows="6"
+                placeholder="Tell us how we can help you..."
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="contact-submit" id="contact-submit">
+              SUBMIT
+            </button>
+            <div id="form-message" class="form-message"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
@@ -110,10 +203,6 @@ layout: default
           <a href="mailto:{{ site.data.company.contact.email }}">
             <svg class="footer-icon"><use href="#icon-mail"></use></svg>
             {{ site.data.company.contact.email }}
-          </a>
-          <a href="tel:{{ site.data.company.contact.phone }}">
-            <svg class="footer-icon"><use href="#icon-phone"></use></svg>
-            {{ site.data.company.contact.phone }}
           </a>
           <p>
             <svg class="footer-icon"><use href="#icon-map-pin"></use></svg>

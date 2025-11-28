@@ -2,6 +2,7 @@ bottle_category:
   name: "Bottle"
   description: "High-quality PET bottles for various applications"
   icon: ""
+  image: "/assets/images/bottles_collection.jpg"
   products:
     - name: "100ml PET Bottle"
       description: "Perfect for samples, travel sizes, and small quantities"
@@ -68,6 +69,7 @@ jar_category:
   name: "Jar"
   description: "Premium PET jars for Oils, Pickles, etc."
   icon: "🫙"
+  image: "/assets/images/jars_collection.jpg"
   products:
     - name: "200gm Jar"
       description: "Perfect for Oil, Pickles, etc."
@@ -102,6 +104,7 @@ beverage_category:
   name: "Beverage"
   description: "Premium PET bottles for Beverage"
   icon: ""
+  image: "/assets/images/beverages_collection.jpg"
   products:
     - name: "180ml Beverage Bottle"
       description: "Perfect for Beverage"
@@ -147,6 +150,7 @@ closure_category:
   name: "Closure"
   description: "Premium PET closures for Bottles, Jars, etc."
   icon: ""
+  image: "/assets/images/closures_collection.jpg"
   products:
     - name: "28mm Cap"
       description: "28mm Cap"
