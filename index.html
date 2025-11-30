@@ -110,6 +110,13 @@ layout: default
                 <p><a href="mailto:{{ site.data.company.contact.email }}">{{ site.data.company.contact.email }}</a></p>
               </div>
             </div>
+            <div class="contact-detail-item">
+              <svg class="contact-detail-icon"><use href="#icon-phone"></use></svg>
+              <div>
+                <strong>Phone:</strong>
+                <p><a href="tel:{{ site.data.company.contact.phone }}">{{ site.data.company.contact.phone }}</a></p>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -203,6 +210,10 @@ layout: default
           <a href="mailto:{{ site.data.company.contact.email }}">
             <svg class="footer-icon"><use href="#icon-mail"></use></svg>
             {{ site.data.company.contact.email }}
+          </a>
+          <a href="tel:{{ site.data.company.contact.phone }}">
+            <svg class="footer-icon"><use href="#icon-phone"></use></svg>
+            {{ site.data.company.contact.phone }}
           </a>
           <p>
             <svg class="footer-icon"><use href="#icon-map-pin"></use></svg>
