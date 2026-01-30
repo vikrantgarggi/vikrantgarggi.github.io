@@ -1,28 +1,16 @@
-import { Facebook, Instagram, Linkedin, Mail } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail, LucideIcon } from "lucide-react";
+import { siteConfig, footerConfig } from "@/config/siteConfig";
+
+// Icon mapping for social platforms
+const socialIconMap: Record<string, LucideIcon> = {
+  Facebook,
+  Instagram,
+  LinkedIn: Linkedin,
+  Email: Mail,
+};
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-
-  const quickLinks = [
-    { label: "Products", href: "#products" },
-    { label: "Industries", href: "#industries" },
-    { label: "About Us", href: "#about" },
-    { label: "Contact", href: "#contact" },
-  ];
-
-  const products = [
-    { label: "500ml Bottles", href: "#products" },
-    { label: "1 Liter Bottles", href: "#products" },
-    { label: "2 Liter Bottles", href: "#products" },
-    { label: "5 Liter Bottles", href: "#products" },
-  ];
-
-  const socialLinks = [
-    { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: Mail, href: "mailto:sales@petbottles.com", label: "Email" },
-  ];
 
   return (
     <footer className="bg-foreground text-primary-foreground py-16">
@@ -32,26 +20,31 @@ const Footer = () => {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <div className="w-10 h-10 bg-accent-gradient rounded-lg flex items-center justify-center">
-                <span className="text-foreground font-display font-bold text-lg">PB</span>
+                <span className="text-foreground font-display font-bold text-lg">
+                  {siteConfig.logoText}
+                </span>
               </div>
               <span className="font-display font-bold text-xl">
-                PET<span className="text-accent">Bottles</span>
+                {siteConfig.brandName}<span className="text-accent">{siteConfig.brandHighlight}</span>
               </span>
             </div>
             <p className="text-primary-foreground/60 text-sm mb-6">
-              Your trusted partner for high-quality PET bottles. Serving businesses across India with excellence since 2009.
+              {footerConfig.description}
             </p>
             <div className="flex gap-3">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  className="w-10 h-10 bg-primary-foreground/10 rounded-lg flex items-center justify-center hover:bg-accent-gradient transition-all duration-300 group"
-                  aria-label={social.label}
-                >
-                  <social.icon size={18} className="group-hover:text-foreground transition-colors" />
-                </a>
-              ))}
+              {footerConfig.socialLinks.map((social) => {
+                const IconComponent = socialIconMap[social.platform];
+                return (
+                  <a
+                    key={social.platform}
+                    href={social.href}
+                    className="w-10 h-10 bg-primary-foreground/10 rounded-lg flex items-center justify-center hover:bg-accent-gradient transition-all duration-300 group"
+                    aria-label={social.platform}
+                  >
+                    {IconComponent && <IconComponent size={18} className="group-hover:text-foreground transition-colors" />}
+                  </a>
+                );
+              })}
             </div>
           </div>
 
@@ -59,7 +52,7 @@ const Footer = () => {
           <div>
             <h4 className="font-display font-semibold text-lg mb-4">Quick Links</h4>
             <ul className="space-y-3">
-              {quickLinks.map((link) => (
+              {footerConfig.quickLinks.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
@@ -76,7 +69,7 @@ const Footer = () => {
           <div>
             <h4 className="font-display font-semibold text-lg mb-4">Products</h4>
             <ul className="space-y-3">
-              {products.map((link) => (
+              {footerConfig.productLinks.map((link) => (
                 <li key={link.label}>
                   <a
                     href={link.href}
@@ -93,17 +86,17 @@ const Footer = () => {
           <div>
             <h4 className="font-display font-semibold text-lg mb-4">Contact Us</h4>
             <ul className="space-y-3 text-sm text-primary-foreground/60">
-              <li>Industrial Area</li>
-              <li>Your City, State</li>
-              <li>India - XXXXXX</li>
+              <li>{footerConfig.address.line1}</li>
+              <li>{footerConfig.address.line2}</li>
+              <li>{footerConfig.address.line3}</li>
               <li className="pt-2">
-                <a href="tel:+919800000000" className="hover:text-accent transition-colors">
-                  +91 98XXX XXXXX
+                <a href={footerConfig.address.phoneHref} className="hover:text-accent transition-colors">
+                  {footerConfig.address.phone}
                 </a>
               </li>
               <li>
-                <a href="mailto:sales@petbottles.com" className="hover:text-accent transition-colors">
-                  sales@petbottles.com
+                <a href={footerConfig.address.emailHref} className="hover:text-accent transition-colors">
+                  {footerConfig.address.email}
                 </a>
               </li>
             </ul>
@@ -113,10 +106,13 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-primary-foreground/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-primary-foreground/50">
-            <p>© {currentYear} PET Bottles. All rights reserved.</p>
+            <p>© {currentYear} {footerConfig.copyright}</p>
             <div className="flex gap-6">
-              <a href="#" className="hover:text-accent transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-accent transition-colors">Terms of Service</a>
+              {footerConfig.legal.map((link) => (
+                <a key={link.label} href={link.href} className="hover:text-accent transition-colors">
+                  {link.label}
+                </a>
+              ))}
             </div>
           </div>
         </div>
