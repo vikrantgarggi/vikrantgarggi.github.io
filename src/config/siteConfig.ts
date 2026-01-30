@@ -19,12 +19,12 @@ import bottle5l from "@/assets/bottle-5l.jpg";
 // SITE METADATA
 // ============================================
 export const siteConfig = {
-  name: "PET Bottles",
-  logoText: "PB",
-  brandName: "PET",
-  brandHighlight: "Bottles",
+  name: "Ganpati Industries Mansa",
+  logoText: "GI",
+  brandName: "Ganpati Industries",
+  brandHighlight: "Mansa",
   tagline: "Your trusted partner for high-quality PET bottles",
-  foundedYear: 2009,
+  foundedYear: 2014,
 };
 
 // ============================================
@@ -47,7 +47,7 @@ export const navigationConfig = {
 // HERO SECTION
 // ============================================
 export const heroConfig = {
-  badge: "Trusted by 500+ Businesses",
+  badge: "Trusted by 50+ Businesses",
   headline: "Premium PET Bottles for",
   headlineHighlight: "Your Business",
   description:
@@ -64,7 +64,7 @@ export const heroConfig = {
     href: "#contact",
   },
   floatingCard: {
-    value: "15+",
+    value: "10+",
     label: "Years",
     sublabel: "Of Excellence",
   },
@@ -166,12 +166,12 @@ export const aboutConfig = {
   sectionLabel: "Why Choose Us",
   headline: "Your Trusted Packaging Partner",
   description:
-    "With over 15 years in the industry, we understand what businesses need — quality products, reliable delivery, and competitive pricing. We're not just a supplier; we're your packaging partner.",
+    "With over 10 years in the industry, we understand what businesses need — quality products, reliable delivery, and competitive pricing. We're not just a supplier; we're your packaging partner.",
   stats: [
-    { value: "15+", label: "Years Experience" },
-    { value: "500+", label: "Happy Clients" },
+    { value: "10+", label: "Years Experience" },
+    { value: "50+", label: "Happy Clients" },
     { value: "10M+", label: "Bottles Delivered" },
-    { value: "99%", label: "Quality Rate" },
+    { value: "99.5%", label: "Quality Rate" },
   ],
   features: [
     {
@@ -191,8 +191,8 @@ export const aboutConfig = {
     },
     {
       iconName: "Truck",
-      title: "Pan-India Delivery",
-      description: "Reliable logistics network for timely deliveries across India.",
+      title: "Quick Delivery",
+      description: "Reliable logistics network for timely deliveries.",
     },
     {
       iconName: "Users",
@@ -232,19 +232,19 @@ export const contactConfig = {
     {
       iconName: "Phone",
       label: "Phone",
-      value: "+91 98XXX XXXXX",
-      href: "tel:+919800000000",
+      value: "+91 99019 20560",
+      href: "tel:+919901920560",
     },
     {
       iconName: "Mail",
       label: "Email",
-      value: "sales@petbottles.com",
-      href: "mailto:sales@petbottles.com",
+      value: "vikrantgarg.gi@gmail.com",
+      href: "mailto:vikrantgarg.gi@gmail.com",
     },
     {
       iconName: "MapPin",
       label: "Location",
-      value: "Industrial Area, India",
+      value: "Talwandi Road, Mansa, India",
       href: "#",
     },
   ],
@@ -274,23 +274,21 @@ export const footerConfig = {
     { label: "5 Liter Bottles", href: "#products" },
   ],
   address: {
-    line1: "Industrial Area",
-    line2: "Your City, State",
-    line3: "India - XXXXXX",
-    phone: "+91 98XXX XXXXX",
-    phoneHref: "tel:+919800000000",
-    email: "sales@petbottles.com",
-    emailHref: "mailto:sales@petbottles.com",
+    line1: "Talwandi Road, Gehle",
+    line2: "Mansa, Punjab",
+    line3: "India - 151505",
+    phone: "+91 99019 20560",
+    phoneHref: "tel:+919901920560",
+    email: "vikrantgarg.gi@gmail.com",
+    emailHref: "mailto:vikrantgarg.gi@gmail.com",
   },
   socialLinks: [
-    { platform: "Facebook", href: "#" },
-    { platform: "Instagram", href: "#" },
     { platform: "LinkedIn", href: "#" },
-    { platform: "Email", href: "mailto:sales@petbottles.com" },
+    { platform: "Email", href: "mailto:vikrantgarg.gi@gmail.com" },
   ],
   legal: [
     { label: "Privacy Policy", href: "#" },
     { label: "Terms of Service", href: "#" },
   ],
-  copyright: "PET Bottles. All rights reserved.",
+  copyright: "Ganpati Industries. All rights reserved.",
 };
