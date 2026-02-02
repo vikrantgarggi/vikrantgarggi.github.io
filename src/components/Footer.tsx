@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
 import { Facebook, Instagram, Linkedin, Mail, LucideIcon } from "lucide-react";
 import { siteConfig, footerConfig } from "@/config/siteConfig";
+import { productCatalog } from "@/config/productCatalog";
 
 // Icon mapping for social platforms
 const socialIconMap: Record<string, LucideIcon> = {
@@ -18,7 +20,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
+            <Link to="/" className="flex items-center gap-2 mb-4">
               <div className="w-10 h-10 bg-accent-gradient rounded-lg flex items-center justify-center">
                 <span className="text-foreground font-display font-bold text-lg">
                   {siteConfig.logoText}
@@ -27,7 +29,7 @@ const Footer = () => {
               <span className="font-display font-bold text-xl">
                 {siteConfig.brandName}<span className="text-accent">{siteConfig.brandHighlight}</span>
               </span>
-            </div>
+            </Link>
             <p className="text-primary-foreground/60 text-sm mb-6">
               {footerConfig.description}
             </p>
@@ -65,18 +67,25 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Products */}
+          {/* Products - Now with proper routes */}
           <div>
             <h4 className="font-display font-semibold text-lg mb-4">Products</h4>
             <ul className="space-y-3">
-              {footerConfig.productLinks.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-primary-foreground/60 hover:text-accent transition-colors text-sm"
+              {productCatalog.map((product) => (
+                <li key={product.id}>
+                  <Link
+                    to={product.route}
+                    className="text-primary-foreground/60 hover:text-accent transition-colors text-sm flex items-center gap-2"
                   >
-                    {link.label}
-                  </a>
+                    <span className={`text-xs font-bold px-1.5 py-0.5 rounded ${
+                      product.material === "PET" 
+                        ? "bg-blue-500/20 text-blue-400" 
+                        : "bg-amber-500/20 text-amber-400"
+                    }`}>
+                      {product.material}
+                    </span>
+                    {product.shortName}
+                  </Link>
                 </li>
               ))}
             </ul>
